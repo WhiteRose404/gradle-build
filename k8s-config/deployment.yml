@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: depl-app
+  labels:
+    app: spring-app
+
+spec:
+  replicas: 10
+  selector:
+    matchLabels:  
+      app: spring
+  
+  template:
+    metadata:
+      labels:
+        app: spring
+    spec:
+      containers:
+        - name: app
+          image: nginx
+          ports:  
+            - containerPort: 3000
